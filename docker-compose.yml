@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    container_name: devb_postgre
+    environment:
+      POSTGRES_DB: elibrary
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: AIS@4567
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my-network
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: api-image
+    container_name: api
+    depends_on:
+      - db
+    networks:
+      - my-network
+    ports:
+      - "1337:1337"
+
+  nginx:
+    build:
+      context: ./nginx-docker
+      dockerfile: Dockerfile
+    image: my-nginx
+    container_name: my-nginx
+    networks:
+      - my-network
+    ports:
+      - "80:80"
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    image: ui-image
+    container_name: ui
+    depends_on:
+      - api
+    networks:
+      - my-network
+    ports:
+      - "3000:3000"
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

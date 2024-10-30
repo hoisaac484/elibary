@@ -1,0 +1,42 @@
+{
+  "name": "elibary-api",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build && npm pack",
+    "strapi": "strapi",
+    "deploy": "strapi deploy",
+    "build:win": "cross-env NODE_ENV=production npm run build",
+    "start:win": "cross-env NODE_ENV=production npm start",
+    "db": "docker run --name devb_postgre -e POSTGRES_DB=elibrary -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=AIS@4567 -v postgres_data:/var/lib/postgresql/data -p 5432:5432 -d postgres"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "4.25.8",
+    "@strapi/plugin-i18n": "4.25.8",
+    "@strapi/plugin-users-permissions": "4.25.8",
+    "@strapi/strapi": "4.25.8",
+    "bcrypt": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "pg": "^8.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "strapi-plugin-multi-select": "^1.2.3",
+    "styled-components": "5.3.3",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "ce9957a9-e7cb-49dc-a1df-25b735fd9458"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

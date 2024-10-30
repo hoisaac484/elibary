@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "default_thumbnails",
+  "info": {
+    "singularName": "default-thumbnail",
+    "pluralName": "default-thumbnails",
+    "displayName": "default thumbnail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "picture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
